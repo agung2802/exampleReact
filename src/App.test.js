@@ -11,7 +11,7 @@ import store from "./store";
     render(<App />);
     
     var state = storage.getState();
-    
+
     // Temukan tombol dan klik
     const buttonElement = screen.getByTestId('deposit');
     fireEvent.click(buttonElement);
@@ -23,17 +23,19 @@ import store from "./store";
     expect(newState.balance.total).toBe(state.balance.total+10); 
     state = newState;
 
-
     const withdraw = screen.getByTestId('withdraw');
     fireEvent.click(withdraw);
 
     newState = storage.getState();
     expect(newState.balance.total).toBe(state.balance.total-10); 
     state = newState;
+    
+    const text = screen.getByTestId("nilai");
+    expect(text).toBeInTheDocument();
+
 
 
     // render(<App />);
-    // const state = screen.getByTestId("nilai");
     // expect(state.textContent).toBe("$ 0");
     // // Memeriksa nilai state awal
 
